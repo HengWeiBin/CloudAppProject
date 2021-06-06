@@ -8,7 +8,7 @@ import java.time.LocalDate;
 
 public class JDBCUtils {
 
-	private static String jdbcURL = "jdbc:mysql://localhost:3306/todo_management";
+	private static String jdbcURL = "jdbc:mysql://localhost:3306/todo_management?useUnicode=true&characterEncoding=UTF-8&serverTimezone=UTC";
 	private static String jdbcUsername = "todoproject";
 	private static String jdbcPassword = "1234";
 	//Database name : "todo_management"
