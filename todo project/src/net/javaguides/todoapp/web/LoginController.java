@@ -1,7 +1,8 @@
 package net.javaguides.todoapp.web;
 
+import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.StringWriter;
+import java.io.InputStreamReader;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import org.python.util.PythonInterpreter;
 
 import net.javaguides.todoapp.dao.LoginDao;
 import net.javaguides.todoapp.model.LoginBean;
@@ -59,5 +58,24 @@ public class LoginController extends HttpServlet {
 			e.printStackTrace();
 		}
 
+	}
+	
+	public static void main(String [] argv) throws IOException
+	{
+		ProcessBuilder processBuilder = new ProcessBuilder("python", "src/hello.py");
+	    processBuilder.redirectErrorStream(true);
+
+	    Process process = processBuilder.start();
+	    
+	    // for reading the output from stream
+        BufferedReader stdInput = new BufferedReader(
+        		new InputStreamReader(process.getInputStream()));
+        
+        String s = null;
+        while ((s = stdInput.readLine()) != null) {
+            System.out.println(s);
+        }
+
+	    //int exitCode = process.waitFor();
 	}
 }
