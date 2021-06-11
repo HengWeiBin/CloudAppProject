@@ -3,6 +3,8 @@ package net.javaguides.todoapp.web;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,7 +46,7 @@ public class LoginController extends HttpServlet {
 		LoginBean loginBean = new LoginBean();
 		loginBean.setUsername(username);
 		loginBean.setPassword(password);
-
+		//test();
 		try {
 			if (loginDao.validate(loginBean)) {
 				RequestDispatcher dispatcher = request.getRequestDispatcher("todo/todo-list.jsp");
@@ -58,24 +60,5 @@ public class LoginController extends HttpServlet {
 			e.printStackTrace();
 		}
 
-	}
-	
-	public static void main(String [] argv) throws IOException
-	{
-		ProcessBuilder processBuilder = new ProcessBuilder("python", "src/hello.py");
-	    processBuilder.redirectErrorStream(true);
-
-	    Process process = processBuilder.start();
-	    
-	    // for reading the output from stream
-        BufferedReader stdInput = new BufferedReader(
-        		new InputStreamReader(process.getInputStream()));
-        
-        String s = null;
-        while ((s = stdInput.readLine()) != null) {
-            System.out.println(s);
-        }
-
-	    //int exitCode = process.waitFor();
 	}
 }

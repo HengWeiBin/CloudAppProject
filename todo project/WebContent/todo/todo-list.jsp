@@ -24,6 +24,8 @@
 			<ul class="navbar-nav">
 				<li><a href="<%=request.getContextPath()%>/list"
 					class="nav-link">Todos</a></li>
+				<li><a href="<%=request.getContextPath()%>/BullShitGenerator/bullshit.jsp"
+					class="nav-link">文章產生器</a></li>
 			</ul>
 
 			<ul class="navbar-nav navbar-collapse justify-content-end">
