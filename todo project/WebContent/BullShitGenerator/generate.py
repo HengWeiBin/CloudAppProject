@@ -2,6 +2,7 @@ from transformers import TFGPT2LMHeadModel, GPT2Tokenizer
 import random
 import os
 import time
+from googletrans import Translator
 
 def getTokenizer(tokenizer_save_path):
     print("Using pretrained tokenizer...")
@@ -32,6 +33,11 @@ if __name__ == "__main__":
     except:
         raise SystemExit("Input not found!")
         
+    translator = Translator()
+    lang = translator.detect(text).lang
+    if lang != "zh-CN":
+        text = translator.translate(text, dest="zh-tw").text
+        
     #load pretrained model
     tokenizer = getTokenizer(tokenizer_save_path)
     model = TFGPT2LMHeadModel.from_pretrained(model_out_dir)
@@ -54,4 +60,10 @@ if __name__ == "__main__":
     
     with open(output_dir, 'w') as w:
         w.write("Time used: " + str(time.time() - start) + '\n')
-        w.write(tokenizer.decode(beam_output[0]))
+        
+        if lang != "zh-CN":
+            output = translator.translate(tokenizer.decode(beam_output[0]), dest=lang).text
+        else:
+            output = tokenizer.decode(beam_output[0])
+            
+        w.write(output)

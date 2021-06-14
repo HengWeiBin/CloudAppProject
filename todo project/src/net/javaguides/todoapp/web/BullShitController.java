@@ -66,6 +66,10 @@ public class BullShitController extends HttpServlet {
 	{
 		String dir = getServletContext().getRealPath("/");
 		List<String> processParameters = new ArrayList<String>();
+		processParameters.add("C:\\ProgramData\\Anaconda3\\Library\\bin\\conda.bat");
+	    processParameters.add("activate");
+	    processParameters.add("base");
+	    processParameters.add("&");
 	    processParameters.add("C:\\ProgramData\\Anaconda3\\python");
 	    processParameters.add(dir + "BullShitGenerator/generate.py");
 	    
