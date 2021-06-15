@@ -48,6 +48,7 @@ public class BullShitController extends HttpServlet {
 		// TODO Auto-generated method stub
 		request.setCharacterEncoding("UTF-8");
 		String text = request.getParameter("text");
+		String highQualityMode = request.getParameter("isHighQuality");
 		String dir = getServletContext().getRealPath("/");
 		File input = new File(dir + "BullShitGenerator/input.txt");
 		if (!input.createNewFile())
@@ -58,11 +59,15 @@ public class BullShitController extends HttpServlet {
 		Writer file = new OutputStreamWriter(new FileOutputStream(input), StandardCharsets.UTF_8);
 		file.write(text);
 		file.close();
-		generateOutput();
+		
+		if (highQualityMode != null)
+			generateOutput(true);
+		else
+			generateOutput(false);
 		doGet(request, response);
 	}
 	
-	private void generateOutput() throws IOException
+	private void generateOutput(Boolean highQuality) throws IOException
 	{
 		String dir = getServletContext().getRealPath("/");
 		List<String> processParameters = new ArrayList<String>();
@@ -72,6 +77,11 @@ public class BullShitController extends HttpServlet {
 	    processParameters.add("&");
 	    processParameters.add("C:\\ProgramData\\Anaconda3\\python");
 	    processParameters.add(dir + "BullShitGenerator/generate.py");
+	    if (highQuality)
+	    {
+	    	processParameters.add("--highQualityMode");
+	    	processParameters.add("True");
+	    }
 	    
 	    ProcessBuilder processBuilder = new ProcessBuilder(processParameters);
 		processBuilder.redirectErrorStream(true);

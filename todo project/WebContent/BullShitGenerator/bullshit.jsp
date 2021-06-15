@@ -15,14 +15,21 @@
 	<jsp:include page="../common/header.jsp"></jsp:include>
 	<div class="container col-md-8 col-md-offset-3" style="overflow: auto">
 		<h1>文章產生器</h1>
-		<form action="<%=request.getContextPath()%>/BullShitController" method="post">
+		<form action="<%=request.getContextPath()%>/BullShitController" method="post" onsubmit='disableButton()'>
 
 			<div class="form-group">
-				<label for="text">輸入簡短摘要/標題:</label> <input type="text"
-					class="form-control" id="text" placeholder="雲端應用實務"
-					name="text" required>
+				<label for="text">輸入簡短摘要/標題:</label>
+				<input	type="text"
+						class="form-control"
+						id="text"
+						placeholder="雲端應用實務"
+						name="text"
+						required>
+				<input 	type="checkbox"
+						name="isHighQuality">
+				<label for="text">高品質模式</label>
 			</div>
-			<button type="submit" class="btn btn-primary">產生</button>
+			<button id="submit" type="submit" class="btn btn-primary">產生</button>
 
 			<p>
 			<%
@@ -44,6 +51,14 @@
 			%>
 			</p>
 		</form>
+		
+		<script>
+		    function disableButton() {
+		        var btn = document.getElementById('submit');
+		        btn.disabled = true;
+		        btn.innerText = '產生中...'
+		    }
+		</script>
 	</div>
 	<jsp:include page="../common/footer.jsp"></jsp:include>
 </body>
