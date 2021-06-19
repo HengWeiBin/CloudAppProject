@@ -5,15 +5,24 @@
 <head>
 <meta charset="UTF-8">
 <title>BullShitMe</title>
-<link rel="stylesheet"
-	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-	crossorigin="anonymous">
+<link rel="stylesheet" href="../bootstrap.min.css"/>
 </head>
-<body>
 
+<body>
+	<nav class="navbar navbar-inverse">
+		<div class="container">
+	    <!-- Brand and toggle get grouped for better mobile display -->
+	    <div class="navbar-header">
+	      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+	        <span class="sr-only">Toggle navigation</span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	        <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" href="../index.html">eLibrary</a>
+	    </div>
+	</nav>
 	<%-- jsp:include page="../common/header.jsp"></jsp:include>--%>
-	<div class="container col-md-8 col-md-offset-3" style="overflow: auto">
 		<h1>文章產生器</h1>
 		<form action="<%=request.getContextPath()%>/BullShitController" method="post" onsubmit='disableButton()'>
 
