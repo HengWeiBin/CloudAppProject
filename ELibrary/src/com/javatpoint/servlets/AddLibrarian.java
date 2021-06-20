@@ -23,6 +23,7 @@ public class AddLibrarian extends HttpServlet {
 		out.println("<head>");
 		out.println("<title>Add Librarian</title>");
 		out.println("<link rel='stylesheet' href='bootstrap.min.css'/>");
+		out.println("<link rel=\"icon\" href=\"images/elibrary.png\" type=\"image/x-icon\">");
 		out.println("</head>");
 		out.println("<body>");
 		

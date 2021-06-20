@@ -23,6 +23,7 @@ public class ReturnBook extends HttpServlet {
 		out.println("<head>");
 		out.println("<title>Return Book</title>");
 		out.println("<link rel='stylesheet' href='bootstrap.min.css'/>");
+		out.println("<link rel=\"icon\" href=\"images/elibrary.png\" type=\"image/x-icon\">");
 		out.println("</head>");
 		out.println("<body>");
 		request.getRequestDispatcher("navlibrarian.html").include(request, response);
